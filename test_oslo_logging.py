@@ -5,13 +5,17 @@ from sys import argv
 LOG = logging.getLogger(__name__)
 CONF = cfg.CONF
 DOMAIN = "demo"
+
+# register_options must be ahead of CONF.__init()
 logging.register_options(CONF)
-logging.setup(CONF, DOMAIN)
 
 
 if __name__ =="__main__":
     CONF(args=argv[1:], default_config_files=['my.conf'])
-    # Oslo Logging uses INFO as default
+    # setup() will setup logging from config file, which 
+    # must follow CONF.__init()
+    logging.setup(CONF, DOMAIN)
+
     LOG.debug("List of Oslo Logging config options and current values")
     LOG.debug("=" * 80)
     for c in CONF:
