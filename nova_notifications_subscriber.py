@@ -20,7 +20,7 @@ from kombu.mixins import ConsumerMixin
 EXCHANGE_NAME="nova"
 ROUTING_KEY="notifications.info"
 QUEUE_NAME="nova_dump_queue"
-BROKER_URI="amqp://guest:guest@localhost:5672//"
+BROKER_URI="amqp://openstack:redhat@localhost:5672//"
 
 log.basicConfig(stream=sys.stdout, level=log.DEBUG)
 
